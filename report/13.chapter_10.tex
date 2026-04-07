@@ -1,0 +1,62 @@
+\chapter{Crop image following the 2 crossed ellipses frame}
+
+\section{Idea}
+\begin{itemize}
+    \item Determine the lengths of the major and minor axes of both ellipses using the following formulas:
+    \begin{center}
+        \[
+        a = \frac{1}{2} \cdot \sqrt{\text{width}^2 + \text{height}^2}
+        \]
+        \[
+        b = 0.3 \cdot \min(\text{width}, \text{height})
+        \]
+    \end{center}
+
+    \item The cropped image is obtained by retaining all pixels within the region defined by the 2 ellipse equation below:
+    \begin{center}
+        \[
+        \left( \frac{x'}{a} \right)^2 + \left( \frac{y'}{b} \right)^2 \le 1
+        \]
+    \end{center}
+
+    \item Where:
+    \begin{itemize}[label=$\circ$]
+        \item \( (x', y') \) are the coordinates of a point \((x, y)\) after rotation with respect to the ellipse's orientation.
+        \item For the main diagonal, the angle is:
+        \[
+        \theta = -\arctan\left(\frac{\text{height}}{\text{width}}\right)
+        \]
+        
+        \item For the sub-diagonal, the angle is:
+        \[
+        \theta = \arctan\left(\frac{\text{height}}{\text{width}}\right)
+        \]
+    \end{itemize}
+\end{itemize}
+
+\section{Processing}
+\begin{enumerate}
+    \item Convert image to \texttt{float32} to avoid overflow during the process.
+    \item Determine the necessary values: image width, height, coordinates of the center point, length of the major axis, and length of the minor axis.
+    \item Calculate the rotation angle for the coordinate index grid. Then, shift the origin \((0, 0)\) to the center of the image.
+    \item Create a Boolean mask matrix where each element is \texttt{true} if the corresponding pixel position, after rotation, satisfies the above ellipse equation; otherwise, it is \texttt{false}. Apply this method for two ellipses with two different rotation angles, and combine their masks.
+    \item A 2 crossed ellipses frame cropped image is obtained when collecting all the pixel which is valid using above mask matrix.
+    \item Convert to \texttt{uint8} for correct display.
+\end{enumerate}
+
+\section{Result}
+\begin{itemize}
+    \item Original image:
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{images/img.png}
+        \includegraphics[width=0.3\textwidth]{images/img_ellipses_crop.png}
+    \end{center} 
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{images/img2.jpg}
+        \includegraphics[width=0.3\textwidth]{images/img2_ellipses_crop.jpg}
+    \end{center} 
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{images/img3.jpg}
+        \includegraphics[width=0.3\textwidth]{images/img3_ellipses_crop.jpg}
+    \end{center} 
+\end{itemize}

@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{TABLE OF CONTENTS}{1}{section*.1}%
+\contentsline {chapter}{LIST OF FIGURES}{2}{section*.3}%
+\contentsline {chapter}{\numberline {1}Network Evidence}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}NE-1: VPC Endpoint created for DynamoDB}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}NE-2: Lambda has VpcConfig}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}NE-3: Route table has Endpoint route}{4}{section.1.3}%
+\contentsline {section}{\numberline {1.4}NE-4: No NAT Gateway exists}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}NE-5: Lambda successfully calls DynamoDB}{5}{section.1.5}%
+\contentsline {chapter}{\numberline {2}IAM evidence}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}IM-1: Two separate IAM Roles}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}IM-2: Policy specifies exact resource ARN}{7}{section.2.2}%
+\contentsline {section}{\numberline {2.3}IM-3: Lambda attached to the correct Role}{8}{section.2.3}%

@@ -1,0 +1,36 @@
+\chapter{Crop image following the circle frame}
+
+\section{Idea}
+\begin{itemize}
+    \item Determine the center point of the image. Choose the appropriate radius of the circle following the formula: ($min(width, height)$)
+    \item The cropped image is obtained by extracting all pixels within the resulting region, bounded by the area where the Euclidean's distance \cite{euclide_distance} from center point to that pixel is less than or equal to the circle's radius.
+\end{itemize}
+
+\section{Processing}
+\begin{enumerate}
+    \item Convert image to \texttt{float32} to avoid overflow during the process.
+    \item Determine the coordinate of center point and the radius following the above formula.
+    \item Create image coordinate index grid for calculating Euclidean's distance.
+    \item Create a Boolean mask matrix whose value is \texttt{true} when the Euclidean's distance is less than or equal to the radius; otherwise, it is \texttt{false}.
+    \item A circle frame cropped image is obtained when collecting all the pixel which is valid using above mask matrix.
+    \item Convert to \texttt{uint8} for correct display.
+\end{enumerate}
+
+\newpage
+
+\section{Result}
+\begin{itemize}
+    \item Original image/Cropped image:
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{images/img.png}
+        \includegraphics[width=0.3\textwidth]{images/img_circle_crop.png}
+    \end{center} 
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{images/img2.jpg}
+        \includegraphics[width=0.3\textwidth]{images/img2_circle_crop.jpg}
+    \end{center} 
+    \begin{center}
+        \includegraphics[width=0.3\textwidth]{images/img3.jpg}
+        \includegraphics[width=0.3\textwidth]{images/img3_circle_crop.jpg}
+    \end{center} 
+\end{itemize}
