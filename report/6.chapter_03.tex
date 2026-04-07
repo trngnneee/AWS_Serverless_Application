@@ -1,92 +1,35 @@
-\chapter{Quản lý xuất nhập file}
+\chapter{IAM evidence}
 
-\section{Bài tập 1: Tạo và ghi nội dung vào file}
+
+\section{IM-1: Two separate IAM Roles}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/11.png}
-    \caption{Tạo một file mới và ghi nội dung vào file đó}
+    \includegraphics[width=0.8\textwidth]{images/IM1.png}
+    \caption{IM-1}
 \end{figure}
 
-\section{Bài tập 2: Xem nội dung của file}
+\section{IM-2: Policy specifies exact resource ARN}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/12.png}
-    \caption{Xem nội dung của file}
+    \includegraphics[width=0.8\textwidth]{images/IM2-1.png}
+    \caption{Lambda Base Role's Policy}
 \end{figure}
 
-\section{Bài tập 3: Ghi thêm nội dung vào file mà không ghi đè nội dung cũ}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/13.png}
-    \caption{Nội dung của file sau khi thêm}
+    \includegraphics[width=0.8\textwidth]{images/IM2-2.png}
+    \caption{Lambda Task Role's Policy}
 \end{figure}
 
-\section{Bài tập 4: Đếm số dòng trong file}
+\section{IM-3: Lambda attached to the correct Role}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/14.png}
-    \caption{Số dòng trong file}
+    \includegraphics[width=0.8\textwidth]{images/IM3-1.png}
+    \caption{Lambda Execution Role by Action}
 \end{figure}
 
-\section{Bài tập 5: Đếm số từ trong file}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/15.png}
-    \caption{Số từ trong file}
-\end{figure}
-
-\section{Bài tập 6: Sao chép file}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/16.png}
-    \caption{Nội dung của file đã được sao chép}
-\end{figure}
-
-\section{Bài tập 7: Di chuyển file}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/17.png}
-    \caption{Danh sách file và thư mục trong folder \texttt{tmp} sau khi di chuyển}
-\end{figure}
-
-\section{Bài tập 8: Xóa file}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/18.png}
-    \caption{Danh sách file sau khi xóa}
-\end{figure}
-
-\section{Bài tập 9: Hiển thị các file trong thư mục}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/19.png}
-    \caption{Danh sách file và file ẩn}
-\end{figure}
-
-\section{Bài tập 10: Tìm kiếm chuỗi trong file}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/20.png}
-    \caption{Kết quả tìm kiếm của chuỗi \texttt{Linux}}
-\end{figure}
-
-\section{Bài tập 11: Đổi tên file}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/21.png}
-    \caption{Danh sách file ở \textsl{tmp} sau khi đổi tên}
-\end{figure}
-
-\section{Bài tập 12: Tạo thư mục và di chuyển file vào thư mục}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/22.png}
-    \caption{Danh sách file trong folder mới tạo}
-\end{figure}
-
-\section{Bài tập 13: Hiển thị nội dung file theo từng phần}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/23.png}
-    \caption{Nội dung file theo từng phần}
+    \includegraphics[width=0.8\textwidth]{images/IM3-2.png}
+    \caption{Lambda Execution Role by Resources}
 \end{figure}

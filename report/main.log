@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.2)  7 APR 2026 10:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.2)  7 APR 2026 17:10
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1424,91 +1424,122 @@ l.29 \contents
 
 ] (./4.chapter_01.tex
 Chapter 1.
-<images/NE1.png, id=103, 1927.2pt x 1084.05pt>
-File: images/NE1.png Graphic file (type png)
-<use images/NE1.png>
-Package pdftex.def Info: images/NE1.png  used on input line 6.
+<images/SE1.png, id=138, 1927.2pt x 1084.05pt>
+File: images/SE1.png Graphic file (type png)
+<use images/SE1.png>
+Package pdftex.def Info: images/SE1.png  used on input line 6.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
-<images/NE2.png, id=105, 1927.2pt x 1084.05pt>
-File: images/NE2.png Graphic file (type png)
-<use images/NE2.png>
-Package pdftex.def Info: images/NE2.png  used on input line 13.
+<images/SE2.png, id=140, 1927.2pt x 1084.05pt>
+File: images/SE2.png Graphic file (type png)
+<use images/SE2.png>
+Package pdftex.def Info: images/SE2.png  used on input line 13.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
 [3
 
 
+ <./images/SE1.png>]
+<images/SE3.png, id=146, 1927.2pt x 1084.05pt>
+File: images/SE3.png Graphic file (type png)
+<use images/SE3.png>
+Package pdftex.def Info: images/SE3.png  used on input line 20.
+(pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
+<images/SE4-1.png, id=147, 1927.2pt x 1084.05pt>
+File: images/SE4-1.png Graphic file (type png)
+<use images/SE4-1.png>
+Package pdftex.def Info: images/SE4-1.png  used on input line 27.
+(pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
+ [4 <./images/SE2.png> <./images/SE3.png>]
+<images/SE4-2.png, id=155, 1927.2pt x 1084.05pt>
+File: images/SE4-2.png Graphic file (type png)
+<use images/SE4-2.png>
+Package pdftex.def Info: images/SE4-2.png  used on input line 33.
+(pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
+) (./5.chapter_02.tex [5 <./images/SE4-1.png> <./images/SE4-2.png>]
+Chapter 2.
+<images/NE1.png, id=162, 1927.2pt x 1084.05pt>
+File: images/NE1.png Graphic file (type png)
+<use images/NE1.png>
+Package pdftex.def Info: images/NE1.png  used on input line 6.
+(pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
+<images/NE2.png, id=163, 1927.2pt x 1084.05pt>
+File: images/NE2.png Graphic file (type png)
+<use images/NE2.png>
+Package pdftex.def Info: images/NE2.png  used on input line 13.
+(pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
+[6
+
  <./images/NE1.png>]
-<images/NE3.png, id=111, 1927.2pt x 1084.05pt>
+<images/NE3.png, id=171, 1927.2pt x 1084.05pt>
 File: images/NE3.png Graphic file (type png)
 <use images/NE3.png>
 Package pdftex.def Info: images/NE3.png  used on input line 20.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
-<images/NE4.png, id=112, 1927.2pt x 1084.05pt>
+<images/NE4.png, id=172, 1927.2pt x 1084.05pt>
 File: images/NE4.png Graphic file (type png)
 <use images/NE4.png>
 Package pdftex.def Info: images/NE4.png  used on input line 27.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
- [4 <./images/NE2.png> <./images/NE3.png>]
-<images/NE5.png, id=120, 1927.2pt x 1084.05pt>
+ [7 <./images/NE2.png> <./images/NE3.png>]
+<images/NE5.png, id=179, 1927.2pt x 1084.05pt>
 File: images/NE5.png Graphic file (type png)
 <use images/NE5.png>
 Package pdftex.def Info: images/NE5.png  used on input line 34.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
-) (./5.chapter_02.tex [5 <./images/NE4.png> <./images/NE5.png>]
-Chapter 2.
-<images/IM1.png, id=127, 1927.2pt x 1084.05pt>
+) (./6.chapter_03.tex [8 <./images/NE4.png> <./images/NE5.png>]
+Chapter 3.
+<images/IM1.png, id=186, 1927.2pt x 1084.05pt>
 File: images/IM1.png Graphic file (type png)
 <use images/IM1.png>
 Package pdftex.def Info: images/IM1.png  used on input line 7.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
-<images/IM2-1.png, id=128, 1927.2pt x 1084.05pt>
+<images/IM2-1.png, id=187, 1927.2pt x 1084.05pt>
 File: images/IM2-1.png Graphic file (type png)
 <use images/IM2-1.png>
 Package pdftex.def Info: images/IM2-1.png  used on input line 14.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
-[6
+[9
 
  <./images/IM1.png>]
-<images/IM2-2.png, id=135, 1927.2pt x 1084.05pt>
+<images/IM2-2.png, id=193, 1927.2pt x 1084.05pt>
 File: images/IM2-2.png Graphic file (type png)
 <use images/IM2-2.png>
 Package pdftex.def Info: images/IM2-2.png  used on input line 20.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
-<images/IM3-1.png, id=136, 1927.2pt x 1084.05pt>
+<images/IM3-1.png, id=194, 1927.2pt x 1084.05pt>
 File: images/IM3-1.png Graphic file (type png)
 <use images/IM3-1.png>
 Package pdftex.def Info: images/IM3-1.png  used on input line 27.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
- [7 <./images/IM2-1.png> <./images/IM2-2.png>]
-<images/IM3-2.png, id=143, 1927.2pt x 1084.05pt>
+ [10 <./images/IM2-1.png> <./images/IM2-2.png>]
+<images/IM3-2.png, id=201, 1927.2pt x 1084.05pt>
 File: images/IM3-2.png Graphic file (type png)
 <use images/IM3-2.png>
 Package pdftex.def Info: images/IM3-2.png  used on input line 33.
 (pdftex.def)             Requested size: 389.00757pt x 218.80765pt.
-) [8 <./images/IM3-1.png> <./images/IM3-2.png>] (./main.aux)
+) [11 <./images/IM3-1.png> <./images/IM3-2.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D474E1D989DE67A05D00EB14F6CF3B77;2425.
+(rerunfilecheck)             Checksum: 72808E6A4ED3541C6BA6F1C67CDA8806;3528.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 56637 strings out of 474222
- 1280637 string characters out of 5748734
- 2327630 words of memory out of 5000000
- 78010 multiletter control sequences out of 15000+600000
+ 56697 strings out of 474222
+ 1281723 string characters out of 5748734
+ 2329632 words of memory out of 5000000
+ 78053 multiletter control sequences out of 15000+600000
  569222 words of font info for 98 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  123i,12n,121p,1190b,1870s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on main.pdf (9 pages, 1726974 bytes).
+Output written on main.pdf (12 pages, 2476435 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 26783 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 236 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 26848 words of extra memory for PDF output out of 29859 (max. 10000000)
 

@@ -1,35 +1,36 @@
-\chapter{IAM evidence}
+\chapter{Network Evidence}
 
-
-\section{IM-1: Two separate IAM Roles}
+\section{NE-1: VPC Endpoint created for DynamoDB}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/IM1.png}
-    \caption{IM-1}
+    \includegraphics[width=0.8\textwidth]{images/NE1.png}
+    \caption{NE-1}
 \end{figure}
 
-\section{IM-2: Policy specifies exact resource ARN}
+\section{NE-2: Lambda has VpcConfig}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/IM2-1.png}
-    \caption{Lambda Base Role's Policy}
+    \includegraphics[width=0.8\textwidth]{images/NE2.png}
+    \caption{NE-2}
 \end{figure}
 
+\section{NE-3: Route table has Endpoint route}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/IM2-2.png}
-    \caption{Lambda Task Role's Policy}
+    \includegraphics[width=0.8\textwidth]{images/NE3.png}
+    \caption{NE-3}
 \end{figure}
 
-\section{IM-3: Lambda attached to the correct Role}
+\section{NE-4: No NAT Gateway exists}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/IM3-1.png}
-    \caption{Lambda Execution Role by Action}
+    \includegraphics[width=0.8\textwidth]{images/NE4.png}
+    \caption{NE-4}
 \end{figure}
 
+\section{NE-5: Lambda successfully calls DynamoDB}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/IM3-2.png}
-    \caption{Lambda Execution Role by Resources}
+    \includegraphics[width=0.8\textwidth]{images/NE5.png}
+    \caption{NE-5}
 \end{figure}
