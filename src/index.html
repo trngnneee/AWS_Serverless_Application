@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        
+        <!-- Add Task Form -->
+        <div class="form-container">
+            <h2>Add New Task</h2>
+            <form id="taskForm">
+                <input type="text" id="taskTitle" placeholder="Task Title" required>
+                <textarea id="taskDescription" placeholder="Task Description"></textarea>
+                <input type="date" id="taskDueDate" required>
+                <select id="taskPriority" required>
+                    <option value="">Select Priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters">
+            <h2>Filter Tasks</h2>
+            <select id="filterPriority">
+                <option value="">All Priorities</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <input type="date" id="filterDueDate">
+            <button id="clearFilters">Clear Filters</button>
+        </div>
+        
+        <!-- Task List -->
+        <div class="task-list" id="taskList">
+            <!-- Tasks will be rendered here -->
+        </div>
+    </div>
+    
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Task</h2>
+            <form id="editForm">
+                <input type="text" id="editTitle" placeholder="Task Title" required>
+                <textarea id="editDescription" placeholder="Task Description"></textarea>
+                <input type="date" id="editDueDate" required>
+                <select id="editPriority" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <button type="submit">Update Task</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
