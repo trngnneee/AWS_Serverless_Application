@@ -1,64 +1,20 @@
-\chapter{Quản lý gói phần mềm}
+\chapter{Log evidence}
 
-\section{Bài tập 1: Cập nhật danh sách gói phần mềm}
+\section{Successful request}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/24.png}
-    \caption{Sau khi update}
+    \includegraphics[width=0.8\textwidth]{images/LOG1.png}
+    \caption{Log showing the REPORT line with StatusCode 200, Duration, Billed Duration, and Memory Used}
 \end{figure}
 
-\section{Bài tập 2: Cài đặt một gói phần mềm}
+\section{Error request}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/25.png}
-    \caption{Sau khi cài đặt gói \texttt{vfstpd}}
+    \includegraphics[width=0.8\textwidth]{images/LOG2-1.png}
+    \caption{Sending missing input}
 \end{figure}
-
-\section{Bài tập 3: Tìm kiếm một gói phần mềm}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{images/26.png}
-    \caption{Kết quả tìm kiếm gói \texttt{net\_tools}}
-\end{figure}
-
-\section{Bài tập 4: Hiển thị thông tin một gói phần mềm}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/27.png}
-    \caption{Thông tin gói \texttt{vfstpd}}
-\end{figure}
-
-\section{Bài tập 5: Gỡ một gói phần mềm}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/28.png}
-    \caption{Sau khi gỡ gói \texttt{vfstpd}}
-\end{figure}
-
-\section{Bài tập 6: Tìm kiếm các gói phần mềm đã cài đặt}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/29.png}
-    \caption{Kết quả tìm kiếm các gói có chứa từ khóa \texttt{python}}
-\end{figure}
-
-\section{Bài tập 7: Liệt kê các gói phụ thuộc của một gói phần mềm}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/30.png}
-    \caption{Các gói phụ thuộc mà \texttt{vim} cần để hoạt động}
-\end{figure}
-
-\section{Bài tập 8: Kiểm tra các gói phần mềm bị hỏng hoặc lỗi}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/31.png}
-    \caption{Các gói phần mềm bị hỏng hoặc lỗi và sửa chữa}
-\end{figure}
-
-\section{Bài tập 9: Xóa các gói phần mềm không cần thiết}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/32.png}
-    \caption{Sau khi xóa các gói phần mềm không cần thiết}
+    \includegraphics[width=0.8\textwidth]{images/LOG2-2.png}
+    \caption{Log showing an ERROR entry or stack trace triggered by sending missing input}
 \end{figure}
