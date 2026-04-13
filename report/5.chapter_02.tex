@@ -1,36 +1,45 @@
-\chapter{Network Evidence}
+\chapter{Web Application}
 
-\section{NE-1: VPC Endpoint created for DynamoDB}
+\section{Frontend accessible via the CloudFront URL}
+\begin{itemize}
+    \item \textbf{Serverless Application URL:} \url{d14g6okcs1rawz.cloudfront.net}
+\end{itemize}
+
+\section{Backend API}
+\begin{itemize}
+    \item \textbf{Backend API accessible via the API gateway URL:} \url{https://py29vzblk3.execute-api.ap-southeast-2.amazonaws.com/prod}
+\end{itemize}
+\subsection{API \texttt{GET /tasks} testing with Postman}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/NE1.png}
-    \caption{NE-1}
+    \includegraphics[width=0.8\textwidth]{images/API1.png}
+    \caption{\texttt{GET /tasks}}
 \end{figure}
 
-\section{NE-2: Lambda has VpcConfig}
+\subsection{API \texttt{POST /tasks} testing with Postman}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/NE2.png}
-    \caption{NE-2}
+    \includegraphics[width=0.8\textwidth]{images/API2.png}
+    \caption{\texttt{POST /tasks}}
 \end{figure}
 
-\section{NE-3: Route table has Endpoint route}
+\subsection{API \texttt{PUT /tasks/{id}} testing with Postman}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/NE3.png}
-    \caption{NE-3}
+    \includegraphics[width=0.8\textwidth]{images/API3.png}
+    \caption{\texttt{PUT /tasks/{id}}}
 \end{figure}
 
-\section{NE-4: No NAT Gateway exists}
+\subsection{API \texttt{DELETE /tasks/{id}} testing with Postman}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/NE4.png}
-    \caption{NE-4}
+    \includegraphics[width=0.8\textwidth]{images/API4.png}
+    \caption{\texttt{DELETE /tasks/{id}}}
 \end{figure}
 
-\section{NE-5: Lambda successfully calls DynamoDB}
+\section{Database Item}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/NE5.png}
-    \caption{NE-5}
+    \includegraphics[width=0.8\textwidth]{images/DB.png}
+    \caption{Database Explorer}
 \end{figure}

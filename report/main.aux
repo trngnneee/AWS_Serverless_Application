@@ -8,66 +8,105 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \babel@aux{english}{}
 \@writefile{toc}{\contentsline {chapter}{TABLE OF CONTENTS}{1}{section*.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{LIST OF FIGURES}{3}{section*.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {1}Frontend Security Evidence}{5}{chapter.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{LIST OF FIGURES}{4}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Web Application}{6}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {1.1}SE-1: S3 Block Public Access enabled}{5}{section.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces SE-1}}{5}{figure.caption.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.2}SE-2: Direct S3 access rejected}{6}{section.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces SE-2}}{6}{figure.caption.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.3}SE-3: CloudFront access succeeds}{6}{section.1.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces SE-3}}{6}{figure.caption.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {1.4}SE-4: OAC attached to CloudFront}{7}{section.1.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Origins Access List}}{7}{figure.caption.8}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Origins Access Setting}}{7}{figure.caption.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {2}Network Evidence}{8}{chapter.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Frontend accessible via the CloudFront URL}{6}{section.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Backend API}{6}{section.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}API \texttt  {GET /tasks} testing with Postman}{6}{subsection.1.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces \texttt  {GET /tasks}}}{6}{figure.caption.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}API \texttt  {POST /tasks} testing with Postman}{7}{subsection.1.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces \texttt  {POST /tasks}}}{7}{figure.caption.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.3}API \texttt  {PUT /tasks/{id}} testing with Postman}{7}{subsection.1.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces \texttt  {PUT /tasks/{id}}}}{7}{figure.caption.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.4}API \texttt  {DELETE /tasks/{id}} testing with Postman}{8}{subsection.1.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces \texttt  {DELETE /tasks/{id}}}}{8}{figure.caption.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Database Item}{8}{section.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Database Explorer}}{8}{figure.caption.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Architecture Diagram}{9}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {2.1}NE-1: VPC Endpoint created for DynamoDB}{8}{section.2.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces NE-1}}{8}{figure.caption.10}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.2}NE-2: Lambda has VpcConfig}{9}{section.2.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces NE-2}}{9}{figure.caption.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.3}NE-3: Route table has Endpoint route}{9}{section.2.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces NE-3}}{9}{figure.caption.12}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.4}NE-4: No NAT Gateway exists}{10}{section.2.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces NE-4}}{10}{figure.caption.13}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2.5}NE-5: Lambda successfully calls DynamoDB}{10}{section.2.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces NE-5}}{10}{figure.caption.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}IAM evidence}{11}{chapter.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Architecture Diagram}{9}{section.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Architecture Diagram}}{9}{figure.caption.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Security Evidence Package}{10}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}IM-1: Two separate IAM Roles}{11}{section.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces IM-1}}{11}{figure.caption.15}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}IM-2: Policy specifies exact resource ARN}{12}{section.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Lambda Base Role's Policy}}{12}{figure.caption.16}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Lambda Task Role's Policy}}{12}{figure.caption.17}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}IM-3: Lambda attached to the correct Role}{13}{section.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Lambda Execution Role by Action}}{13}{figure.caption.18}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Lambda Execution Role by Resources}}{13}{figure.caption.19}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Log evidence}{14}{chapter.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Frontend Security Evidence}{10}{section.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}SE-1: S3 Block Public Access enabled}{10}{subsection.3.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces SE-1}}{10}{figure.caption.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}SE-2: Direct S3 access rejected}{11}{subsection.3.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces SE-2}}{11}{figure.caption.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.3}SE-3: CloudFront access succeeds}{11}{subsection.3.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces SE-3}}{11}{figure.caption.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.4}SE-4: OAC attached to CloudFront}{12}{subsection.3.1.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Origins Access List}}{12}{figure.caption.14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Origins Access Setting}}{12}{figure.caption.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Network Evidence}{12}{section.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}NE-1: VPC Endpoint created for DynamoDB}{13}{subsection.3.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces NE-1}}{13}{figure.caption.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}NE-2: Lambda has VpcConfig}{13}{subsection.3.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces NE-2}}{13}{figure.caption.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}NE-3: Route table has Endpoint route}{14}{subsection.3.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces NE-3}}{14}{figure.caption.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}NE-4: No NAT Gateway exists}{14}{subsection.3.2.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces NE-4}}{14}{figure.caption.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}NE-5: Lambda successfully calls DynamoDB}{15}{subsection.3.2.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces NE-5}}{15}{figure.caption.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}IAM evidence}{15}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}IM-1: Two separate IAM Roles}{15}{subsection.3.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.11}{\ignorespaces IM-1}}{15}{figure.caption.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}IM-2: Policy specifies exact resource ARN}{16}{subsection.3.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.12}{\ignorespaces Lambda Base Role's Policy}}{16}{figure.caption.22}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.13}{\ignorespaces Lambda Task Role's Policy}}{16}{figure.caption.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}IM-3: Lambda attached to the correct Role}{17}{subsection.3.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.14}{\ignorespaces Lambda Execution Role by Action}}{17}{figure.caption.24}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.15}{\ignorespaces Lambda Execution Role by Resources}}{17}{figure.caption.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.4}Log evidence}{17}{section.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Successful request}{18}{subsection.3.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.16}{\ignorespaces Log showing the REPORT line with StatusCode 200, Duration, Billed Duration, and Memory Used}}{18}{figure.caption.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Error request}{18}{subsection.3.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.17}{\ignorespaces Sending missing input}}{18}{figure.caption.27}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.18}{\ignorespaces Log showing an ERROR entry or stack trace triggered by sending missing input}}{19}{figure.caption.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Monitoring Dashboard}{20}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Successful request}{14}{section.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Log showing the REPORT line with StatusCode 200, Duration, Billed Duration, and Memory Used}}{14}{figure.caption.20}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Error request}{15}{section.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Sending missing input}}{15}{figure.caption.21}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Log showing an ERROR entry or stack trace triggered by sending missing input}}{15}{figure.caption.22}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Monitoring Dashboard}{16}{chapter.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}CloudWatch Dashboard}{20}{section.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces CloudWatch Dashboard showing at least 5 widgets with live data}}{20}{figure.caption.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Alarm}{21}{section.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces 2 alarms created}}{21}{figure.caption.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}AWS Budget configuration page}{21}{section.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces AWS Budget configuration page}}{21}{figure.caption.31}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces AWS Budget alert configuration page}}{22}{figure.caption.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Cost Report}{23}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {5.1}CloudWatch Dashboard}{16}{section.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces CloudWatch Dashboard showing at least 5 widgets with live data}}{16}{figure.caption.23}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.2}Alarm}{17}{section.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces 2 alarms created}}{17}{figure.caption.24}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5.3}AWS Budget configuration page}{17}{section.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces AWS Budget configuration page}}{17}{figure.caption.25}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces AWS Budget alert configuration page}}{18}{figure.caption.26}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {6}Cost Report}{19}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}AWS Cost Explorer/Billing Dashboard}{23}{section.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces AWS Cost Explorer}}{23}{figure.caption.33}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Billing Dashboard}}{24}{figure.caption.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Documentation}{25}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {6.1}AWS Cost Explorer/Billing Dashboard}{19}{section.6.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces AWS Cost Explorer}}{19}{figure.caption.27}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Billing Dashboard}}{20}{figure.caption.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Request Flow}{25}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}\texttt  {GET /tasks}}{25}{subsection.6.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}\texttt  {POST /tasks}}{27}{subsection.6.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.3}\texttt  {PUT /tasks/{id}}}{28}{subsection.6.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1.4}\texttt  {DELETE /tasks/{id}}}{30}{subsection.6.1.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Serverless auto-scaling}{32}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Lambda scales from 0 to N:}{32}{subsection.6.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}API Gateway as a Native Load Balancer:}{32}{subsection.6.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}No Application Load Balancer is needed}{32}{subsection.6.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}CDN and OAC}{33}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}CloudFront Caching}{33}{subsection.6.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Origin Access Control (OAC)}{33}{subsection.6.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Private S3 Bucket vs Static Website Hosting}{34}{subsection.6.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}VPC Endpoint}{34}{section.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Reason Lambda inside a Private Subnet needs a VPC Endpoint to reach DynamoDB:}{34}{subsection.6.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}The Traffic Path:}{35}{subsection.6.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}VPC Endpoint vs NAT Gateway}{36}{subsection.6.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6.1}{\ignorespaces Comparison between VPC Gateway Endpoint and NAT Gateway}}{36}{table.caption.35}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Source Code}{37}{chapter.7}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
 \abx@aux@read@bbl@mdfivesum{E75D7E0DB03F09D45B25DF2F538BB294}
-\gdef \@abspage@last{21}
+\gdef \@abspage@last{38}

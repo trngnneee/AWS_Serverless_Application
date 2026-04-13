@@ -1,31 +1,38 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces SE-1}}{5}{figure.caption.5}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces SE-2}}{6}{figure.caption.6}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces SE-3}}{6}{figure.caption.7}%
-\contentsline {figure}{\numberline {1.4}{\ignorespaces Origins Access List}}{7}{figure.caption.8}%
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Origins Access Setting}}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces \texttt {GET /tasks}}}{6}{figure.caption.5}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces \texttt {POST /tasks}}}{7}{figure.caption.6}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces \texttt {PUT /tasks/{id}}}}{7}{figure.caption.7}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces \texttt {DELETE /tasks/{id}}}}{8}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Database Explorer}}{8}{figure.caption.9}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces NE-1}}{8}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces NE-2}}{9}{figure.caption.11}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces NE-3}}{9}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces NE-4}}{10}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces NE-5}}{10}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Architecture Diagram}}{9}{figure.caption.10}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces IM-1}}{11}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Lambda Base Role's Policy}}{12}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Lambda Task Role's Policy}}{12}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Lambda Execution Role by Action}}{13}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Lambda Execution Role by Resources}}{13}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces SE-1}}{10}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces SE-2}}{11}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces SE-3}}{11}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Origins Access List}}{12}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Origins Access Setting}}{12}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces NE-1}}{13}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces NE-2}}{13}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces NE-3}}{14}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces NE-4}}{14}{figure.caption.19}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces NE-5}}{15}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces IM-1}}{15}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Lambda Base Role's Policy}}{16}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Lambda Task Role's Policy}}{16}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Lambda Execution Role by Action}}{17}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Lambda Execution Role by Resources}}{17}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.16}{\ignorespaces Log showing the REPORT line with StatusCode 200, Duration, Billed Duration, and Memory Used}}{18}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.17}{\ignorespaces Sending missing input}}{18}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.18}{\ignorespaces Log showing an ERROR entry or stack trace triggered by sending missing input}}{19}{figure.caption.28}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Log showing the REPORT line with StatusCode 200, Duration, Billed Duration, and Memory Used}}{14}{figure.caption.20}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Sending missing input}}{15}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Log showing an ERROR entry or stack trace triggered by sending missing input}}{15}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces CloudWatch Dashboard showing at least 5 widgets with live data}}{20}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 2 alarms created}}{21}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces AWS Budget configuration page}}{21}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces AWS Budget alert configuration page}}{22}{figure.caption.32}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces CloudWatch Dashboard showing at least 5 widgets with live data}}{16}{figure.caption.23}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces 2 alarms created}}{17}{figure.caption.24}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces AWS Budget configuration page}}{17}{figure.caption.25}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces AWS Budget alert configuration page}}{18}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces AWS Cost Explorer}}{23}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Billing Dashboard}}{24}{figure.caption.34}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces AWS Cost Explorer}}{19}{figure.caption.27}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Billing Dashboard}}{20}{figure.caption.28}%
+\addvspace {10\p@ }

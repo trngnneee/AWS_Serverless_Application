@@ -1,27 +1,57 @@
 \babel@toc {english}{}\relax 
 \contentsline {chapter}{TABLE OF CONTENTS}{1}{section*.1}%
-\contentsline {chapter}{LIST OF FIGURES}{3}{section*.3}%
-\contentsline {chapter}{\numberline {1}Frontend Security Evidence}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}SE-1: S3 Block Public Access enabled}{5}{section.1.1}%
-\contentsline {section}{\numberline {1.2}SE-2: Direct S3 access rejected}{6}{section.1.2}%
-\contentsline {section}{\numberline {1.3}SE-3: CloudFront access succeeds}{6}{section.1.3}%
-\contentsline {section}{\numberline {1.4}SE-4: OAC attached to CloudFront}{7}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Network Evidence}{8}{chapter.2}%
-\contentsline {section}{\numberline {2.1}NE-1: VPC Endpoint created for DynamoDB}{8}{section.2.1}%
-\contentsline {section}{\numberline {2.2}NE-2: Lambda has VpcConfig}{9}{section.2.2}%
-\contentsline {section}{\numberline {2.3}NE-3: Route table has Endpoint route}{9}{section.2.3}%
-\contentsline {section}{\numberline {2.4}NE-4: No NAT Gateway exists}{10}{section.2.4}%
-\contentsline {section}{\numberline {2.5}NE-5: Lambda successfully calls DynamoDB}{10}{section.2.5}%
-\contentsline {chapter}{\numberline {3}IAM evidence}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}IM-1: Two separate IAM Roles}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}IM-2: Policy specifies exact resource ARN}{12}{section.3.2}%
-\contentsline {section}{\numberline {3.3}IM-3: Lambda attached to the correct Role}{13}{section.3.3}%
-\contentsline {chapter}{\numberline {4}Log evidence}{14}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Successful request}{14}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Error request}{15}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Monitoring Dashboard}{16}{chapter.5}%
-\contentsline {section}{\numberline {5.1}CloudWatch Dashboard}{16}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Alarm}{17}{section.5.2}%
-\contentsline {section}{\numberline {5.3}AWS Budget configuration page}{17}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Cost Report}{19}{chapter.6}%
-\contentsline {section}{\numberline {6.1}AWS Cost Explorer/Billing Dashboard}{19}{section.6.1}%
+\contentsline {chapter}{LIST OF FIGURES}{4}{section*.3}%
+\contentsline {chapter}{\numberline {1}Web Application}{6}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Frontend accessible via the CloudFront URL}{6}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Backend API}{6}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}API \texttt {GET /tasks} testing with Postman}{6}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}API \texttt {POST /tasks} testing with Postman}{7}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}API \texttt {PUT /tasks/{id}} testing with Postman}{7}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}API \texttt {DELETE /tasks/{id}} testing with Postman}{8}{subsection.1.2.4}%
+\contentsline {section}{\numberline {1.3}Database Item}{8}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Architecture Diagram}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Architecture Diagram}{9}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Security Evidence Package}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Frontend Security Evidence}{10}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}SE-1: S3 Block Public Access enabled}{10}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}SE-2: Direct S3 access rejected}{11}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}SE-3: CloudFront access succeeds}{11}{subsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.1.4}SE-4: OAC attached to CloudFront}{12}{subsection.3.1.4}%
+\contentsline {section}{\numberline {3.2}Network Evidence}{12}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}NE-1: VPC Endpoint created for DynamoDB}{13}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}NE-2: Lambda has VpcConfig}{13}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}NE-3: Route table has Endpoint route}{14}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}NE-4: No NAT Gateway exists}{14}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}NE-5: Lambda successfully calls DynamoDB}{15}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}IAM evidence}{15}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}IM-1: Two separate IAM Roles}{15}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}IM-2: Policy specifies exact resource ARN}{16}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}IM-3: Lambda attached to the correct Role}{17}{subsection.3.3.3}%
+\contentsline {section}{\numberline {3.4}Log evidence}{17}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Successful request}{18}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Error request}{18}{subsection.3.4.2}%
+\contentsline {chapter}{\numberline {4}Monitoring Dashboard}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}CloudWatch Dashboard}{20}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Alarm}{21}{section.4.2}%
+\contentsline {section}{\numberline {4.3}AWS Budget configuration page}{21}{section.4.3}%
+\contentsline {chapter}{\numberline {5}Cost Report}{23}{chapter.5}%
+\contentsline {section}{\numberline {5.1}AWS Cost Explorer/Billing Dashboard}{23}{section.5.1}%
+\contentsline {chapter}{\numberline {6}Documentation}{25}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Request Flow}{25}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}\texttt {GET /tasks}}{25}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}\texttt {POST /tasks}}{27}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}\texttt {PUT /tasks/{id}}}{28}{subsection.6.1.3}%
+\contentsline {subsection}{\numberline {6.1.4}\texttt {DELETE /tasks/{id}}}{30}{subsection.6.1.4}%
+\contentsline {section}{\numberline {6.2}Serverless auto-scaling}{32}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Lambda scales from 0 to N:}{32}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}API Gateway as a Native Load Balancer:}{32}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}No Application Load Balancer is needed}{32}{subsection.6.2.3}%
+\contentsline {section}{\numberline {6.3}CDN and OAC}{33}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}CloudFront Caching}{33}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Origin Access Control (OAC)}{33}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Private S3 Bucket vs Static Website Hosting}{34}{subsection.6.3.3}%
+\contentsline {section}{\numberline {6.4}VPC Endpoint}{34}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Reason Lambda inside a Private Subnet needs a VPC Endpoint to reach DynamoDB:}{34}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}The Traffic Path:}{35}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}VPC Endpoint vs NAT Gateway}{36}{subsection.6.4.3}%
+\contentsline {chapter}{\numberline {7}Source Code}{37}{chapter.7}%

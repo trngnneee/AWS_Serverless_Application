@@ -1,71 +1,300 @@
-\chapter{Hướng dẫn khắc phục lỗi cơ bản network, services trên linux}
+\chapter{Documentation}
 
-\section{Bài tập 1: Kiểm tra máy tính có kết nối Internet hay không}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/54.png}
-    \caption{Kết quả kiểm tra kết nối Internet}
-\end{figure}
+\section{Request Flow}
 
-\section{Bài tập 2: Kiểm tra cấu hình DNS}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/55.png}
-    \caption{Sau khi thay đổi nameserver}
-\end{figure}
+\subsection{\texttt{GET /tasks}}
+\begin{itemize}
+  \item \textbf{Step 1: User access browser:}
+  \begin{itemize}
+  \item The user accesses the application URL via their browser. The browser first requests the static frontend assets (HTML, CSS, JavaScript) from CloudFront.
+  \end{itemize}
+  \item \textbf{Step 2: CloudFront and S3 (OAC):}
+  \begin{itemize}
+    \item CloudFront retrieves the \texttt{index.html} and \texttt{script.js} from the private S3 bucket using Origin Access Control (OAC).
+    \item These assets are delivered to the browser with an HTTP 200 status.
+  \end{itemize}
+  \item \textbf{Step 3: Frontend API Call:}
+  \begin{itemize}
+    \item Once the page loads, the \texttt{script.js} executes a \texttt{fetch} request to the API Gateway endpoint.
+    \item The request is targeted at the \texttt{GET /tasks} path to retrieve all existing tasks.
+  \end{itemize}
+  \item \textbf{Step 4: API Gateway Routing and Throttling:}
+  \begin{itemize}
+    \item API Gateway receives the HTTPS request and validates the CORS policy against the specific CloudFront domain.
+    \item It applies Throttling rules (100 req/s rate and 50 burst) to limit request throughput.
+  \end{itemize}
+  \item \textbf{Step 5: Lambda Trigger and VPC Entry:}
+  \begin{itemize}
+    \item API Gateway triggers the Backend Lambda function, passing the request as an event.
+    \item The function is initialized within the Custom VPC using \texttt{VpcConfig}, attaching to private subnets for network isolation.
+  \end{itemize}
+  \item \textbf{Step 6: Network Isolation and Security Group:}
+  \begin{itemize}
+    \item The Lambda function, residing in the private subnet, initiates a connection to DynamoDB.
+    \item The attached Security Group restricts outbound traffic to port 443 strictly for the DynamoDB Prefix List.
+  \end{itemize}
+  \item \textbf{Step 7: Private Data Path via VPC Endpoint:}
+  \begin{itemize}
+    \item The traffic does not traverse the public internet. Instead, the Route Table directs it through the VPC Gateway Endpoint.
+    \item This ensures all communication stays on the AWS private backbone for zero-cost and high security.
+  \end{itemize}
+  \item \textbf{Step 8: DynamoDB Data Retrieval:}
+  \begin{itemize}
+    \item The request reaches Amazon DynamoDB. Lambda executes a \texttt{Scan} or \texttt{Query} (via GSI) operation on the \texttt{TasksTable}.
+    \item Access is authorized by a dedicated IAM TaskRole using the Least Privilege principle.
+  \end{itemize}
+  \item \textbf{Step 9: Observability and Logging:}
+  \begin{itemize}
+    \item Lambda processes the retrieved data and logs execution details (StatusCode 200, Duration, Memory Used) to CloudWatch Logs.
+    \item Real-time metrics are updated on the TaskManager-Dashboard.
+  \end{itemize}
+  \item \textbf{Step 10: Final Response:}
+  \begin{itemize}
+    \item Lambda returns the JSON payload and required CORS headers to API Gateway.
+    \item API Gateway forwards the response to the browser, which renders the task list on the responsive interface.
+  \end{itemize}
+\end{itemize}
 
-\section{Bài tập 3: Kiểm tra phân giải DNS}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/56.png}
-    \caption{Kết quả khi chạy phân giải DNS}
-\end{figure}
+\subsection{\texttt{POST /tasks}}
+\begin{itemize}
+  \item \textbf{Step 1: User interaction in Browser:}
+  \begin{itemize}
+    \item The user fills out the "Add New Task" form and clicks the submit button.
+    \item The browser's JavaScript captures the input data (title, description, priority, dueDate) and prepares a JSON payload.
+  \end{itemize}
+  \item \textbf{Step 2: Preflight CORS Request (OPTIONS):}
+  \begin{itemize}
+    \item Since a POST request with JSON content is a non-simple request, the browser first sends an OPTIONS request to API Gateway.
+    \item API Gateway validates the Origin against the CloudFront domain and returns the allowed methods and headers.
+  \end{itemize}
+  \item \textbf{Step 3: Frontend API Call:}
+  \begin{itemize}
+    \item After a successful preflight, the \texttt{script.js} sends the actual \texttt{POST} request with the JSON body to the API Gateway endpoint.
+  \end{itemize}
+  \item \textbf{Step 4: API Gateway Routing and Throttling:}
+  \begin{itemize}
+    \item API Gateway receives the HTTPS POST request, validates the domain, and applies throttling limits (100 req/s rate and 50 burst).
+    \item It ensures the request volume does not exceed the Lambda Reserved Concurrency of 50.
+  \end{itemize}
+  \item \textbf{Step 5: Lambda Trigger and VPC Entry:}
+  \begin{itemize}
+    \item API Gateway triggers the Lambda function, passing the task data in the event body.
+    \item The function is initialized within the Custom VPC using its \texttt{VpcConfig}, attaching to private subnets across two AZs for High Availability.
+  \end{itemize}
+  \item \textbf{Step 6: Network Isolation and Security Group:}
+  \begin{itemize}
+    \item The Lambda function operates inside the private network without a NAT Gateway.
+    \item The Security Group allows outbound traffic on port 443 strictly to the DynamoDB Prefix List only.
+  \end{itemize}
+  \item \textbf{Step 7: Private Data Path via VPC Endpoint:}
+  \begin{itemize}
+    \item The request is routed through the VPC Gateway Endpoint for DynamoDB.
+    \item This ensures the task data travels entirely over the AWS private backbone, never traversing the public internet.
+  \end{itemize}
+  \item \textbf{Step 8: DynamoDB PutItem Operation:}
+  \begin{itemize}
+    \item Lambda generates a unique \texttt{taskId} (UUID) and a \texttt{createdAt} timestamp.
+    \item It executes the \texttt{PutItem} command to store the task in the \texttt{TasksTable} using the permissions granted by the dedicated IAM TaskRole.
+  \end{itemize}
+  \item \textbf{Step 9: Observability and Logging:}
+  \begin{itemize}
+    \item Lambda logs the successful creation or any validation errors (e.g., missing required fields) to CloudWatch Logs.
+    \item Metrics such as Invocations and Duration are sent to the TaskManager-Dashboard.
+  \end{itemize}
+  \item \textbf{Step 10: Final Response:}
+  \begin{itemize}
+    \item Lambda returns a 201 Created status code along with the new task object and required CORS headers.
+    \item API Gateway forwards the response to the browser, which updates the UI to display the new task.
+  \end{itemize}
+\end{itemize}
 
-\section{Bài tập 4: Kiểm tra RAM đang sử dụng}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/57.png}
-    \caption{Kết quả RAM đang sử dụng}
-\end{figure}
+\subsection{\texttt{PUT /tasks/{id}}}
+\begin{itemize}
+  \item \textbf{Step 1: User interaction in Browser:}
+  \begin{itemize}
+    \item The user modifies a task (e.g., changing status to "done" or updating priority) and clicks the update button.
+    \item The JavaScript code identifies the \texttt{taskId} and prepares a JSON object containing only the updated fields.
+  \end{itemize}
+  \item \textbf{Step 2: Preflight CORS Request (OPTIONS):}
+  \begin{itemize}
+    \item The browser sends an \texttt{OPTIONS} request to the API Gateway to verify permissions for the \texttt{PUT} method.
+    \item API Gateway confirms the CloudFront origin and returns the necessary Access-Control headers.
+  \end{itemize}
+  \item \textbf{Step 3: Frontend API Call:}
+  \begin{itemize}
+    \item The frontend executes a \texttt{fetch} request to the specific resource path: \texttt{PUT /tasks/{taskId}}.
+  \end{itemize}
+  \item \textbf{Step 4: API Gateway Routing and Throttling:}
+  \begin{itemize}
+    \item API Gateway receives the HTTPS request and matches it to the \texttt{PUT} method of the \texttt{/tasks/{id}} resource.
+    \item It applies rate limiting (100 req/s) and burst limits (50) to protect the backend.
+  \end{itemize}
+  \item \textbf{Step 5: Lambda Trigger and VPC Entry:}
+  \begin{itemize}
+    \item The Backend Lambda function is triggered with the \texttt{taskId} passed as a path parameter.
+    \item The function operates within the Custom VPC via its \texttt{VpcConfig}, ensuring all traffic is isolated from the public internet.
+  \end{itemize}
+  \item \textbf{Step 6: Network Isolation and Security Group:}
+  \begin{itemize}
+    \item Lambda initiates a secure connection from the private subnet.
+    \item The Security Group restricts outbound communication to port 443, directed only towards the DynamoDB Prefix List.
+  \end{itemize}
+  \item \textbf{Step 7: Private Data Path via VPC Endpoint:}
+  \begin{itemize}
+    \item The update request is routed through the VPC Gateway Endpoint for DynamoDB.
+    \item This ensures the task data stays within the AWS private backbone, maintaining zero-cost and defense-in-depth security.
+  \end{itemize}
+  \item \textbf{Step 8: DynamoDB UpdateItem Operation:}
+  \begin{itemize}
+    \item Lambda executes the \texttt{UpdateItem} command on the \texttt{TasksTable}.
+    \item It updates specific attributes using an Expression Attribute map, authorized by the IAM TaskRole with Least Privilege permissions.
+  \end{itemize}
+  \item \textbf{Step 9: Observability and Monitoring:}
+  \begin{itemize}
+    \item Lambda logs the outcome to CloudWatch Logs, including the REPORT line with Duration and Memory metrics.
+    \item The CloudWatch Dashboard reflects the updated metrics for Latency and Invocations.
+  \end{itemize}
+  \item \textbf{Step 10: Final Response:}
+  \begin{itemize}
+    \item Lambda returns a 200 OK status and the updated task data along with CORS headers.
+    \item API Gateway forwards the response to the browser, which refreshes the UI to show the updated task status.
+  \end{itemize}
+\end{itemize}
 
-\section{Bài tập 5: Kiểm tra IP}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/58.png}
-    \caption{Kết quả IP và các interface đang có trên server}
-\end{figure}
+\subsection{\texttt{DELETE /tasks/{id}}}
+\begin{itemize}
+  \item \textbf{Step 1: User interaction in Browser:}
+  \begin{itemize}
+    \item The user clicks the "Delete" icon or button next to a specific task.
+    \item The browser's JavaScript identifies the unique \texttt{taskId} associated with that task.
+  \end{itemize}
+  \item \textbf{Step 2: Preflight CORS Request (OPTIONS):}
+  \begin{itemize}
+    \item The browser automatically sends an \texttt{OPTIONS} request to API Gateway to confirm that the \texttt{DELETE} method is permitted from the CloudFront origin.
+    \item API Gateway responds with the necessary CORS headers.
+  \end{itemize}
+  \item \textbf{Step 3: Frontend API Call:}
+  \begin{itemize}
+    \item After a successful preflight, the JavaScript executes a \texttt{fetch} request to the API Gateway endpoint with the \texttt{DELETE} method, targeting the specific resource path: \texttt{/tasks/{taskId}}.
+  \end{itemize}
+  \item \textbf{Step 4: API Gateway Routing and Throttling:}
+  \begin{itemize}
+    \item API Gateway receives the request and applies Throttling rules, including a rate of 100 req/s and a burst limit of 50.
+    \item It routes the request to the Backend Lambda function.
+  \end{itemize}
+  \item \textbf{Step 5: Lambda Trigger and VPC Entry:}
+  \begin{itemize}
+    \item The Lambda function is triggered and initialized within the Custom VPC using \texttt{VpcConfig}.
+    \item It connects to two private subnets to ensure High Availability.
+  \end{itemize}
+  \item \textbf{Step 6: Network Isolation and Security Group:}
+  \begin{itemize}
+    \item The Lambda function, isolated in a private subnet, initiates communication with DynamoDB.
+    \item The Security Group restricts outbound traffic to port 443 only for the DynamoDB Prefix List.
+  \end{itemize}
+  \item \textbf{Step 7: Private Data Path via VPC Endpoint:}
+  \begin{itemize}
+    \item The traffic is directed through the VPC Gateway Endpoint, staying entirely on the AWS private backbone.
+    \item This avoids any exposure to the public internet and prevents NAT Gateway costs.
+  \end{itemize}
+  \item \textbf{Step 8: DynamoDB DeleteItem Operation:}
+  \begin{itemize}
+    \item Lambda executes the \texttt{DeleteItem} command on the \texttt{TasksTable} using the provided \texttt{taskId}.
+    \item The operation is authorized by the IAM TaskRole following the Least Privilege principle.
+  \end{itemize}
+  \item \textbf{Step 9: Observability and Monitoring:}
+  \begin{itemize}
+    \item Lambda logs the completion of the deletion to CloudWatch Logs, showing the REPORT line with Duration and Memory metrics.
+    \item The execution is tracked by the TaskManager-Dashboard widgets.
+  \end{itemize}
+  \item \textbf{Step 10: Final Response:}
+  \begin{itemize}
+    \item Lambda returns a 200 OK status code and a confirmation message in JSON format.
+    \item API Gateway forwards the response to the browser, which then removes the task from the display.
+  \end{itemize}
+\end{itemize}
 
-\section{Bài tập 6: Kiểm tra IP Gateway}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/59.png}
-    \caption{Kết quả default gateway trên server}
-\end{figure}
+\section{Serverless auto-scaling}
+\subsection{Lambda scales from 0 to N:}
+\begin{itemize}
+  \item \textbf{Scale from 0:} When there are no incoming requests, the Lambda function has zero active instances, resulting in no cost. When a request arrives, AWS automatically provisions a new instance of the Lambda function to handle it, allowing for seamless scaling without any manual intervention.
+  \item \textbf{Scale to N:} As the number of incoming requests increases, AWS continues to create additional instances of the Lambda function as needed, up to the configured limits (e.g., Reserved Concurrency). This allows the application to handle varying levels of traffic without performance degradation, while still maintaining a cost-effective architecture since you only pay for the compute time used by each invocation.
+\end{itemize}
 
-\section{Bài tập 7: Kiểm tra RAM và CPU các dịch vụ đang chạy}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/60.png}
-    \caption{Kết quả RAM và CPU của từng dịch vụ đang chạy}
-\end{figure}
+\subsection{API Gateway as a Native Load Balancer:}
+\begin{itemize}
+  \item In a serverless architecture, API Gateway functions as the entry point and distributor for all traffic. It automatically routes incoming requests to the appropriate Lambda function based on the defined API routes and methods.
+  \begin{itemize}
+    \item \textbf{Traffic Distribution:} It receives HTTPS requests from the internet and automatically routes them to the available Lambda execution environments, effectively balancing the load across multiple instances of the function as they scale up.
+    \item \textbf{Throttling and Rate Limiting:} API Gateway also provides built-in throttling and rate limiting capabilities to prevent abuse and ensure fair usage of the API.
+    \item \textbf{Native Integration:} Since API Gateway is designed to work seamlessly with Lambda, it eliminates the need for a traditional load balancer, simplifying the architecture and reducing operational overhead while still providing high availability and scalability.
+  \end{itemize}
+\end{itemize}
 
-\section{Bài tập 8: Kiểm tra các port đang lắng nghe trên server}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/61.png}
-    \caption{Kết quả các port đang lắng nghe trên server}
-\end{figure}
+\subsection{No Application Load Balancer is needed}
+\begin{itemize}
+  \item An Application Load Balancer is typically used to distribute traffic across a fleet of virtual machines (EC2) or containers. It is not required for this project because:
+  \begin{itemize}
+    \item \textbf{Serverless Native Integration:} API Gateway is designed to work directly with Lambda functions, providing built-in routing and load distribution without the need for an additional load balancer.
+    \item \textbf{Cost and Complexity:} Introducing an Application Load Balancer would add unnecessary cost and complexity to the architecture, as it would require additional resources to manage and maintain.
+    \item \textbf{Scalability:} Lambda functions automatically scale in response to incoming traffic, and API Gateway can handle the routing without any bottlenecks, making an Application Load Balancer redundant in this serverless setup.
+  \end{itemize}
+\end{itemize}
 
-\section{Bài tập 9: Kiểm tra firewall trên ubuntu}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/62.png}
-    \caption{Kết quả firewall trên ubuntu}
-\end{figure}
+\section{CDN and OAC}
 
-\section{Bài tập 10: Thiết lập rule firewall trên ufw}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/63.png}
-    \caption{Kết quả rule firewall trên ubuntu (OpenSSH profile không tìm thấy nên em đang để trống)}
-\end{figure}
+\subsection{CloudFront Caching}
+\begin{itemize}
+  \item CloudFront speeds up the delivery of the application by storing copies of the static assets (HTML, CSS, JavaScript) in edge locations around the world.
+  \begin{itemize}
+    \item \textbf{Cache HIT:} Occurs when user requests a file and a valid version of that file is already stored in the edge location closest to the user. The file is delivered directly from the cache, resulting in faster load times and reduced latency.
+    \item \textbf{Cache MISS:} Happens when the requested file is not found at the edge location or the cached version has expired. CloudFront must then go back to the S3 Bucket to retrieve the file, send it to the user, and store a copy in its cache for future requests.
+  \end{itemize}
+  \item To reset the cache, we can create a new Invalidation in CloudFront, specifying the paths to the assets that need to be refreshed (e.g., \texttt{/index.html}, \texttt{/script.js}). This forces CloudFront to fetch the latest version from the S3 bucket on the next request.
+\end{itemize}
+
+\subsection{Origin Access Control (OAC)}
+\begin{itemize}
+  \item \textbf{Definition:} Origin Access Control (OAC) is a security feature in CloudFront that allows the CDN to authenticate and securely communicate with an S3 bucket.
+  \item \textbf{Reason OAC is required:}  OAC is necessary because it ensures that only CloudFront distribution can read the objects inside your S3 bucket. It prevents users from bypassing the CDN to access the files directly, which is critical for maintaining the "Zero-Cost Secure Architecture" of this project.
+\end{itemize}
+
+\subsection{Private S3 Bucket vs Static Website Hosting}
+\begin{itemize}
+  \item \textbf{Private Bucket:} The bucket must remain private with all "Block Public Access" options enabled to prevent unauthorized internet users from scanning or downloading your source code directly.
+  \item \textbf{No Static Website Hosting:} Public S3 Bucket with Static Website Hosting enabled would allow anyone to access the files directly via the S3 URL, which is a security risk because it bypasses CloudFront's security and caching, violating the "defense-in-depth" architecture required for this assignment. By keeping the bucket private and using OAC, we ensure that all access goes through CloudFront, which can enforce security policies and provide better performance.
+  \item \textbf{Access Path:} All traffic must flow through CloudFront, which retrieves the assets from the private S3 bucket using OAC. This setup ensures that the application benefits from CloudFront's caching and security features while keeping the S3 bucket secure and inaccessible to direct public access, and the S3 only serves as an origin for CloudFront, not a public endpoint.
+\end{itemize}
+
+\section{VPC Endpoint}
+\subsection{Reason Lambda inside a Private Subnet needs a VPC Endpoint to reach DynamoDB:}
+\begin{itemize}
+  \item \textbf{Default Isolation:} When a Lambda function is placed inside a private subnet, it does not have direct access to the internet. This means it does not have a public IP address or a path to the internet, so it cannot reach public AWS services like DynamoDB without a VPC Endpoint or a NAT Gateway.
+  \item \textbf{Public Service Nature:} AWS DynamoDB is a public service that typically requires internet access to communicate with it. Without a VPC Endpoint, the Lambda function would need to route traffic through a NAT Gateway to access DynamoDB, which would incur additional costs and potentially introduce latency.
+  \item \textbf{Bridge:} Without a VPC Endpoint, the Lambda function would be effectively isolated from DynamoDB, making it impossible to perform any database operations. The VPC Endpoint serves as a bridge that allows the Lambda function to securely and privately communicate with DynamoDB without exposing it to the public internet, thus maintaining the security and cost-efficiency of the architecture.
+\end{itemize}
+
+\subsection{The Traffic Path:}
+\begin{itemize}
+  \item \textbf{Internal Routing:} When Lambda sends a request to DynamoDB, the VPC Route Table identifies the destination (the DynamoDB Prefix List) and directs the traffic toward the VPC Gateway Endpoint.
+  \item \textbf{Private Backbone:} The traffic travels through the AWS private backbone network, ensuring that it does not traverse the public internet at any point. This provides enhanced security and eliminates data transfer costs associated with NAT Gateway usage.
+  \item \textbf{No Internet Traversal:} Because the request never leaves the AWS global network, it is not exposed to the risks of the public web, and it bypasses the need for internet-facing gateways. This design adheres to the "Zero-Cost Secure Architecture" principle by avoiding unnecessary components and ensuring all communication remains private and secure within AWS.
+  \item \textbf{Direct Access:} The VPC Endpoint allows the Lambda function to directly access DynamoDB without needing to route through a NAT Gateway, which would be required if the Lambda function were in a public subnet. This direct access is crucial for maintaining low latency and high performance while keeping costs down.
+  \item \textbf{Security Group Enforcement:} The Security Group attached to the Lambda function ensures that only traffic destined for DynamoDB (port 443 to the DynamoDB Prefix List) is allowed, further securing the communication path and preventing any unauthorized access attempts.
+  \item \textbf{Outcome:} The result is a secure, efficient, and cost-effective communication path between the Lambda function and DynamoDB, fully leveraging AWS's private network infrastructure while adhering to best practices for security and architecture design.
+\end{itemize}
+
+\subsection{VPC Endpoint vs NAT Gateway}
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|p{7cm}|p{6cm}|}
+\hline
+\textbf{Feature} & \textbf{VPC Gateway Endpoint (Used in Project)} & \textbf{NAT Gateway (Prohibited)} \\ \hline
+\textbf{Cost} & \textbf{\$0 / month} (Free for DynamoDB) & \textbf{$\approx$ \$32 / month} base charge \\ \hline
+\textbf{Security} & \textbf{Higher}: Traffic is strictly private and never touches the internet. & \textbf{Lower}: Traffic traverses the NAT Gateway to reach public endpoints. \\ \hline
+\textbf{Complexity} & Simple configuration via Route Tables. & Requires Public Subnets and an Internet Gateway. \\ \hline
+\textbf{Efficiency} & Direct access to the AWS private backbone. & Adds a networking hop through an external gateway. \\ \hline
+\end{tabular}
+\caption{Comparison between VPC Gateway Endpoint and NAT Gateway}
+\end{table}
